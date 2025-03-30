@@ -33,8 +33,11 @@ export const apiConnector = async (
 };
 
 // services/apiConnector.ts
-export const fetchResearchPapers = async (query: string, k: number=2) => {
-  const endpoint = "http://172.16.8.46:5000/agent/fetch_docs";
+export const fetchResearchPapers = async (query: string, max_papers: number) => {
+  // const endpoint = "http://172.16.8.46:5000/agent/fetch_docs";
+  const endpoint = "http://192.168.193.251:5000/agent/fetch_docs";
+
+  
 
   try {
     const response = await fetch(endpoint, {
@@ -42,7 +45,7 @@ export const fetchResearchPapers = async (query: string, k: number=2) => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ query, k }),
+      body: JSON.stringify({ query, max_papers }),
     });
 
     if (!response.ok) {

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -10,18 +10,27 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { AlertCircle } from "lucide-react";
-import { useDispatch } from "react-redux";
-import { setToken } from "@/lib/slices/authSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { setToken, selectCurrentToken } from "@/lib/slices/authSlice";
 import { apiConnector } from "@/services/apiConnector";
 import { endpoints } from "@/services/api";
 
 export default function LoginPage() {
   const router = useRouter();
   const dispatch = useDispatch();
+  const token = useSelector(selectCurrentToken);
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
+
+  useEffect(() => {
+    console.log("Checking authentication state...", token);
+    if (token) {
+      console.log("User authenticated, redirecting to /library");
+      router.replace("/library"); // Force navigation
+    }
+  }, [token, router]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -29,17 +38,19 @@ export default function LoginPage() {
     setError("");
 
     try {
+      console.log("Submitting login form with data:", formData);
       const response = await apiConnector("POST", endpoints.LOGIN_API, formData);
+      console.log("API Response:", response); // Debug statement
+
       const { token } = response.data;
 
-      // Save token to Redux
+      console.log("Token received:", token);
       dispatch(setToken(token));
 
-      // Redirect to chat page
-      // console.log("login sucessfull",token)
-      router.push("/chat");
-      
+      // Redirect to library page
+      router.replace("/library");
     } catch (err: any) {
+      console.error("Login error:", err);
       setError(err.message || "Invalid email or password. Please try again.");
     } finally {
       setIsLoading(false);

@@ -41,37 +41,40 @@ export function sendOtp(email: string, navigate: (path: string) => void) {
 
 export function login(credentials: LoginCredentials) {
     return async (dispatch: AppDispatch) => {
-        dispatch(setLoading(true));
-        try {
-            const response = await apiConnector("POST", LOGIN_API, credentials);
-
-            if (!response.data.success) {
-                throw new Error(response.data.message);
-            }
-
-            dispatch(setToken(response.data.token));
-            dispatch(
-                setUser({
-                    firstName: response.data.user.firstName,
-                    lastName: response.data.user.lastName,
-                    email: response.data.user.email,
-                    accountType: response.data.user.accountType,
-                })
-            );
-
-            // Optionally, store token in localStorage or cookies
-            localStorage.setItem("authToken", response.data.token);
-
-            toast.success("Login Successful");
-        } catch (error: any) {
-            console.error("LOGIN ERROR:", error);
-            toast.error(error.message || "Login Failed");
-        } finally {
-            dispatch(setLoading(false));
+      dispatch(setLoading(true));
+      try {
+        const response = await apiConnector("POST", LOGIN_API, credentials);
+        console.log("API Response:", response); // Debug statement
+  
+        if (!response.data.success) {
+          throw new Error(response.data.message);
         }
+  
+        const { token, user } = response.data;
+  
+        // Dispatch actions to update Redux state
+        dispatch(setToken(token));
+        dispatch(
+          setUser({
+            firstName: user.firstName,
+            lastName: user.lastName,
+            email: user.email,
+            accountType: user.accountType,
+          })
+        );
+  
+        // Optionally, store token in localStorage
+        localStorage.setItem("authToken", token);
+  
+        toast.success("Login Successful");
+      } catch (error: any) {
+        console.error("LOGIN ERROR:", error);
+        toast.error(error.message || "Login Failed");
+      } finally {
+        dispatch(setLoading(false));
+      }
     };
-}
-
+  }
 export function logout(navigate: (path: string) => void) {
     return async (dispatch: AppDispatch) => {
         try {

@@ -5,9 +5,9 @@ import { toast } from "react-hot-toast";
 // Async thunk to fetch research papers
 export const getResearchPapers = createAsyncThunk(
   "research/fetchPapers",
-  async ({ query, k }: { query: string; k: number }, { rejectWithValue }) => {
+  async ({ query, max_papers }: { query: string; max_papers: number }, { rejectWithValue }) => {
     try {
-      const papers = await fetchResearchPapers(query, k);
+      const papers = await fetchResearchPapers(query, max_papers);
       toast.success(`Found ${papers.length} research papers`);
       
       return {papers}; 

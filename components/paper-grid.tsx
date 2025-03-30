@@ -18,7 +18,7 @@ export function PaperGrid({ papers, loading }: PaperGridProps) {
   }
 
   if (papers.length === 0) {
-    return null; // Don't show any message initially
+    return null;
   }
 
   return (

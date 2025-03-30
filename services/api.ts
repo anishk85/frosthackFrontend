@@ -11,5 +11,7 @@ export const endpoints = {
     UPDATE_PROFILE_API: `${BASE_API}/profile/updateProfile`,
     UPDATE_DISPLAY_PICTURE_API: `${BASE_API}/profile/updateDisplayPicture`,
     DELETE_ACCOUNT_API: `${BASE_API}/profile/deleteProfile`,
-    RESEARCH_API: "http://172.16.8.46:5000/agent/fetch_docs",
+    // RESEARCH_API: "http://172.16.8.46:5000/agent/fetch_docs",
+    RESEARCH_API: "http://192.168.193.251:5000/agent/fetch_docs",
+
 };
