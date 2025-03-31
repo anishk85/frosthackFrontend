@@ -9,7 +9,7 @@
 
 ### Heurist AI Website
 ![Heurist AI](./images/heuristai.png)
-![Heurist AI Repo](./images/heuristai.png)
+![Heurist AI Repo](./images/heuristrepo.png)
 [Walkthrough Their Repo](https://github.com/heurist-network)
 
 
