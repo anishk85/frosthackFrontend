@@ -2,14 +2,19 @@
 
 ### ResearchAI Platform
 ![Platform Overview](./images/library.png)  
+
 ![ResearchAI Platform](./images/summary.png)
+
 ![Interactive Chat](./images/chatbot.png)
+
 ![AI Workflow](./images/workflow.png)
 
 
 ### Heurist AI Website
 ![Heurist AI](./images/heuristai.png)
+
 ![Heurist AI Repo](./images/heuristrepo.png)
+
 [Walkthrough Their Repo](https://github.com/heurist-network)
 
 
@@ -114,6 +119,7 @@ This starts the frontend server, making the application accessible via the brows
 
 ## 🎥 Demo & Showcase
 [Link To The Backend](https://github.com/anishk85/frostHcakBackend)
+
 [Link Of Heurist Based Ai Agents](https://github.com/Davda-James/CryptoCoders)
 
 [Watch the project walkthrough](https://youtu.be/XMh5Vm8Xtbc)
