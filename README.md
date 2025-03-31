@@ -1,7 +1,8 @@
 # ResearchAI: AI-Powered Research Paper Assistant
 
 ### ResearchAI Platform
-![Platform Overview](./images/library.png)  
+
+![Platform Overview](./images/library.png)
 
 ![ResearchAI Platform](./images/summary.png)
 
@@ -9,14 +10,13 @@
 
 ![AI Workflow](./images/workflow.png)
 
-
 ### Heurist AI Website
+
 ![Heurist AI](./images/heuristai.png)
 
 ![Heurist AI Repo](./images/heuristrepo.png)
 
 [Walkthrough Their Repo](https://github.com/heurist-network)
-
 
 ## 📌 Overview
 
@@ -25,7 +25,7 @@ ResearchAI is an intelligent research assistant designed to help researchers sav
 ## 🚀 How It Works
 
 1. **User enters a query** → The system fetches around 30 relevant papers.
-2. **AI selects the best papers** → Our heuristic AI agent filters and selects the top 5 papers using vector embeddings.
+2. **AI selects the best papers** → Our heuristic AI agent filters and selects the top max papers papers using vector embeddings.
 3. **Summarization & Explanation** → A summarizing heuristic AI agent generates concise summaries for each paper.
 4. **Interactive Chat** → Users can engage in a chat-based environment to discuss the content of a selected paper.
 
@@ -80,15 +80,19 @@ Rename `example.env` to `.env` and add necessary values (like GEMINI_API, MONGO_
 ### 3. Run the Backend
 
 For Flask:
+
 ```bash
 python app.py
 ```
 
 For Node.js/Express.js:
+
 ```bash
 npm run dev
 ```
+
 OR
+
 ```bash
 node index.js
 ```
@@ -118,6 +122,7 @@ This starts the frontend server, making the application accessible via the brows
 - **Efficient Paper Ranking**: Developing a heuristic approach to rank the most relevant papers took effort.
 
 ## 🎥 Demo & Showcase
+
 [Link To The Backend](https://github.com/anishk85/frostHcakBackend)
 
 [Link Of Heurist Based Ai Agents](https://github.com/Davda-James/CryptoCoders)
@@ -127,4 +132,3 @@ This starts the frontend server, making the application accessible via the brows
 ## 🙌 Acknowledgments
 
 Big thanks to **Heuristic AI** for making this project possible!
-
