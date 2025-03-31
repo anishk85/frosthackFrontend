@@ -104,7 +104,8 @@ export function ChatModal({ open, onClose, paper }: ChatModalProps) {
     setIsLoading(true);
 
     try {
-      const response = await fetch("http://192.168.193.251:5000/agent/chat", {
+      const agentChatUrl = process.env.NEXT_PUBLIC_AGENT_CHAT_URL;
+      const response = await fetch(agentChatUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

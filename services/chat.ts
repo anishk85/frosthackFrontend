@@ -16,6 +16,7 @@ interface UseChatOptions {
 }
 
 export const useChat = ({ paperId, initialContext }: UseChatOptions) => {
+  const agentChatUrl = process.env.NEXT_PUBLIC_AGENT_CHAT_URL;
   const dispatch = useDispatch();
   const messages = useSelector(selectCurrentChat);
   const { kValue, generateNew } = useSelector(selectChatSettings);
@@ -39,7 +40,7 @@ export const useChat = ({ paperId, initialContext }: UseChatOptions) => {
     );
 
     try {
-      const response = await fetch("http://192.168.193.251:5000/agent/chat", {
+      const response = await fetch(agentChatUrl, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
